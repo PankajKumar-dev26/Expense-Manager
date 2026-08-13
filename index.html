@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Manager</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>FINANCIAL STATEMENT</h1>
+
+      <div class="balance-container">
+        <p class="balance">Remaining Balance</p>
+        <div><span class="amount"></span></div>
+      </div>
+
+      <div class="ledger-container">
+        <div class="transactions">
+          <h2>Transactions</h2>
+          <input
+            type="number"
+            class="input"
+            min="0"
+            placeholder="Enter Amount"
+          />
+          <select name="reason" id="reason">
+            <option value="" disabled selected hidden>Choose a Reason</option>
+            <option value="salary">salary</option>
+            <option value="expense">Expense</option>
+            <option value="purchase">Purchase</option>
+            <option value="sales">Sales</option>
+            <option value="other">Other</option>
+          </select>
+          <input
+            type="text"
+            maxlength="30"
+            class="select-reason"
+            placeholder="(Optional) Note"
+          />
+          <div class="buttons">
+            <button class="deposit">Deposit</button>
+            <button class="withdraw">Withdraw</button>
+          </div>
+        </div>
+
+        <div class="payment-history">
+          <h2>Payment History</h2>
+          <div class="history-container">
+            <ul class="js-payment-history"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dailog-overlay hide">
+      <div class="dailog-box">
+        <button class="dailog-close">×</button>
+        <p class="message">🤔 Something went wrong</p>
+      </div>
+    </div>
+
+    <div class="resetAll">
+      <button class="reset-transactions">Reset All Transaction</button>
+    </div>
+
+    <div class="reset-dialog-overlay hide">
+      <div class="reset-dialog">
+        <!-- Close / cancel button -->
+        <button class="reset-dialog-close" type="button">×</button>
+        <div class="reset-dialog-content">
+          <div class="reset-dialog-icon">⚠️</div>
+          <h2>Clear all transactions?</h2>
+          <p>
+            This will permanently remove all your transaction history. This
+            action cannot be undone.
+          </p>
+          <div class="reset-dialog-buttons">
+            <button class="reset-dialog-no" type="button">No</button>
+            <button class="reset-dialog-yes" type="button">
+              Yes, Clear All
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

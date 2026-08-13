@@ -1,0 +1,1006 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+
+  /* Premium dark background */
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(16, 185, 129, 0.12),
+      transparent 35%
+    ),
+    #080c14;
+
+  color: #f8fafc;
+  padding: 30px 20px;
+}
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 30px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+}
+
+/* =========================================================
+   BALANCE
+   ========================================================= */
+
+.balance-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 24px 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.18),
+    rgba(15, 23, 42, 0.9)
+  );
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  border-radius: 18px;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* "Remaining Balance" */
+
+.balance {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.balance-container > div {
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.amount {
+  margin-left: 5px;
+  color: #34d399;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   LEDGER
+   ========================================================= */
+
+.ledger-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* =========================================================
+   TRANSACTIONS + PAYMENT HISTORY CARDS
+   ========================================================= */
+
+.transactions,
+.payment-history {
+  min-height: 300px;
+  padding: 25px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* =========================================================
+   TRANSACTIONS
+   ========================================================= */
+
+.transactions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 18px;
+}
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+.transactions h2,
+.payment-history h2 {
+  color: #f8fafc;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Small accent underneath headings */
+
+.transactions h2::after,
+.payment-history h2::after {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 3px;
+  margin-top: 7px;
+  background: #34d399;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   INPUTS + SELECT
+   ========================================================= */
+
+.transactions input,
+.transactions select {
+  width: 100%;
+  height: 48px;
+  padding: 0 15px;
+  color: #f8fafc;
+  background: #0b1220;
+  border: 1px solid #263449;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+/* =========================================================
+   INPUT + SELECT FOCUS
+   ========================================================= */
+
+.transactions input:focus,
+.transactions select:focus {
+  border-color: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.12);
+  background: #0e1728;
+}
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.transactions select {
+  cursor: pointer;
+  color: #cbd5e1;
+}
+
+/* Dropdown options */
+
+.transactions select option {
+  background: #0b1220;
+  color: #f8fafc;
+}
+
+/* =========================================================
+   OPTIONAL NOTE
+   ========================================================= */
+
+.transactions .select-reason::placeholder {
+  color: #64748b;
+}
+
+/* =========================================================
+   BUTTON CONTAINER
+   ========================================================= */
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.buttons button {
+  height: 46px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+/* Deposit */
+
+.deposit {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+}
+
+/* Withdraw */
+
+.withdraw {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.18);
+}
+
+/* Button hover */
+
+.buttons button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+/* Button click */
+
+.buttons button:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   PAYMENT HISTORY
+   ========================================================= */
+
+.payment-history {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* =========================================================
+   SCROLLABLE HISTORY AREA
+   ========================================================= */
+
+.history-container {
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+  margin-top: 20px;
+}
+
+/* =========================================================
+   HISTORY LIST
+   ========================================================= */
+
+.js-payment-history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  list-style: none;
+}
+
+/* =========================================================
+   INDIVIDUAL TRANSACTION
+   ========================================================= */
+
+.js-payment-history li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  min-height: 48px;
+  padding: 8px 10px 8px 15px;
+  color: #cbd5e1;
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    min-height 0.3s ease;
+}
+
+/* =========================================================
+   AMOUNT
+   ========================================================= */
+
+.js-payment-history li > span:first-child {
+  align-self: center;
+}
+
+/* =========================================================
+   AMOUNT COLORS
+   ========================================================= */
+
+.js-payment-history li.green {
+  color: #34d399;
+}
+
+.js-payment-history li.red {
+  color: #f87171;
+}
+
+/* =========================================================
+   HISTORY HOVER
+   ========================================================= */
+
+.js-payment-history li:hover {
+  background: #111b2d;
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   + EXPAND BUTTON
+   ========================================================= */
+
+.history-expand {
+  grid-column: 2;
+  grid-row: 1;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.25s ease;
+}
+
+/* =========================================================
+   + BUTTON HOVER
+   ========================================================= */
+
+.history-expand:hover {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   TRANSACTION DETAILS
+   ========================================================= */
+
+.transaction-details {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: 10px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  display: none;
+}
+
+/* =========================================================
+   WHEN TRANSACTION IS OPEN
+   ========================================================= */
+
+.js-payment-history li.open {
+  min-height: 130px;
+  align-items: start;
+}
+
+.js-payment-history li.open .transaction-details {
+  display: block;
+}
+
+/* =========================================================
+   OPEN BUTTON
+   ========================================================= */
+
+.js-payment-history li.open .history-expand {
+  transform: rotate(45deg);
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+   ========================================================= */
+
+.history-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.history-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+  background: #334155;
+
+  border-radius: 10px;
+}
+
+.history-container::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* =========================================================
+   TRANSACTION ACTIONS
+========================================================= */
+
+.transaction-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* =========================================================
+   EDIT / DELETE BUTTON
+========================================================= */
+
+.transaction-actions button {
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* =========================================================
+   EDIT BUTTON
+========================================================= */
+
+.edit-transaction:hover {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.delete-transaction:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   EDIT FORM
+========================================================= */
+
+.edit-transaction-form {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 9px;
+}
+
+/* =========================================================
+   EDIT INPUTS
+========================================================= */
+
+.edit-transaction-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 7px;
+  outline: none;
+  background: #080f1c;
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+/* =========================================================
+   INPUT PLACEHOLDER
+========================================================= */
+
+.edit-transaction-form input::placeholder {
+  color: #64748b;
+}
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+.edit-transaction-form input:focus {
+  border-color: rgba(52, 211, 153, 0.5);
+  background: #0b1424;
+}
+
+/* =========================================================
+   SAVE / CANCEL
+========================================================= */
+
+.edit-form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.edit-form-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 7px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+.save-edit {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+}
+
+.save-edit:hover {
+  background: rgba(52, 211, 153, 0.25);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   CANCEL
+========================================================= */
+
+.cancel-edit {
+  background: rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+}
+
+.cancel-edit:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+}
+
+/* =========================================================
+   DIALOG OVERLAY
+   ========================================================= */
+
+.dailog-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, 0.65);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+/* =========================================================
+   DIALOG BOX
+   ========================================================= */
+
+.dailog-box {
+  position: relative;
+  width: min(450px, 100%);
+  padding: 30px 50px 30px 30px;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+.dailog-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.transaction-details {
+  display: none;
+}
+
+.js-payment-history li.open .transaction-details {
+  display: block;
+}
+
+/* =========================================================
+   CLOSE BUTTON HOVER
+   ========================================================= */
+
+.dailog-close:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.08);
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   CLOSE BUTTON CLICK
+   ========================================================= */
+
+.dailog-close:active {
+  transform: rotate(90deg) scale(0.9);
+}
+
+/* =========================================================
+   RESET ALL TRANSACTIONS
+   ========================================================= */
+
+.resetAll {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 900;
+}
+
+/* =========================================================
+   RESET BUTTON
+   ========================================================= */
+
+.reset-transactions {
+  padding: 10px 16px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 9px;
+  background: rgba(127, 29, 29, 0.25);
+  color: #fca5a5;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.reset-transactions:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.45);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CLICK
+   ========================================================= */
+
+.reset-transactions:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 500px) {
+  .resetAll {
+    top: 12px;
+    right: 12px;
+  }
+
+  .reset-transactions {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+}
+
+/* =========================================================
+   RESET DIALOG OVERLAY
+   ========================================================= */
+
+.reset-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+}
+
+/* =========================================================
+   DIALOG BOX
+   ========================================================= */
+
+.reset-dialog {
+  position: relative;
+  width: min(430px, 100%);
+  padding: 30px;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  color: #f8fafc;
+}
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+.reset-dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #64748b;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.reset-dialog-close:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #f8fafc;
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   DIALOG CONTENT
+   ========================================================= */
+
+.reset-dialog-content {
+  text-align: center;
+}
+
+/* =========================================================
+   WARNING ICON
+   ========================================================= */
+
+.reset-dialog-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.12);
+  font-size: 1.5rem;
+}
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.reset-dialog h2 {
+  margin-bottom: 10px;
+  color: #f8fafc;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.reset-dialog p {
+  max-width: 340px;
+  margin: 0 auto;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   BUTTON CONTAINER
+   ========================================================= */
+
+.reset-dialog-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+/* =========================================================
+   COMMON BUTTON STYLE
+   ========================================================= */
+
+.reset-dialog-buttons button {
+  height: 45px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    background 0.2s ease;
+}
+
+/* =========================================================
+   NO BUTTON
+   ========================================================= */
+
+.reset-dialog-no {
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #cbd5e1;
+}
+
+.reset-dialog-no:hover {
+  background: #263449;
+  color: #f8fafc;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   YES BUTTON
+   ========================================================= */
+
+.reset-dialog-yes {
+  border: none;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.18);
+}
+
+.reset-dialog-yes:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   BUTTON CLICK
+   ========================================================= */
+
+.reset-dialog-buttons button:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 500px) {
+  .reset-dialog {
+    padding: 25px 20px;
+    border-radius: 17px;
+  }
+
+  .reset-dialog-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .reset-dialog-yes {
+    order: 2;
+  }
+
+  .reset-dialog-no {
+    order: 1;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 700px) {
+  body {
+    padding: 15px;
+  }
+
+  .container {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  /* Stack balance vertically */
+
+  .balance-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 20px;
+  }
+
+  .amount {
+    font-size: 1.7rem;
+  }
+
+  /* Stack the two cards */
+
+  .ledger-container {
+    grid-template-columns: 1fr;
+  }
+
+  .transactions,
+  .payment-history {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+ul .green {
+  color: green;
+}
+
+ul .red {
+  color: red;
+}
+
+.hide {
+  display: none;
+}
